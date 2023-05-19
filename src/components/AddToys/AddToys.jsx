@@ -1,9 +1,10 @@
 import { useContext } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const AddToys = () => {
     const { user } = useContext(AuthContext)
-    console.log(user?.displayName)
 
     const handleAddToys = event => {
         event.preventDefault();
@@ -32,19 +33,22 @@ const AddToys = () => {
             ]
         }
 
-        fetch('http://localhost:5000/addToy', {
+        fetch('http://localhost:5000/allToys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(addedToy)
         })
-            .then(result => {
-                console.log(result)
+            .then(res => res.json())
+            .then(data =>{
+                console.log(data)
+                if(data.insertedId){
+                    toast("Added Toy Succesfully!")
+
+                }
             })
-            .catch(error => {
-                console.log(error)
-            })
+            
         console.log(addedToy)
     }
     return (
@@ -73,11 +77,11 @@ const AddToys = () => {
                             <label className="label">
                                 <span defaultValue={user?.displayName} className="label-text">Seller Name</span>
                             </label>
-                            <input type="text" name="sellerName" placeholder="password" className="input input-bordered" />
+                            <input type="text" name="sellerName" placeholder="name" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span defaultValue={user?.email} className="label-text">Seller Email</span>
+                                <span defaultValue={user && user?.email} className="label-text">Seller Email</span>
                             </label>
                             <input type="text" name="sellerEmail" placeholder="email" className="input input-bordered" />
                         </div>
@@ -152,6 +156,7 @@ const AddToys = () => {
                     <button className="btn hover:bg-[#071f17] bg-[#1B4D3E] btn-primary">Add Toy </button>
                 </div>
             </form>
+            <ToastContainer />
         </div>
     );
 };

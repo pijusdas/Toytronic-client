@@ -35,7 +35,7 @@ const NavBar = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li><Link to={'/'}>Home</Link></li>
                         <li tabIndex={0}>
-                            <Link>All Toys</Link>
+                            <Link to={'/allToys'}>All Toys</Link>
                         </li>
                         {user && <>
                             <li><a>My Toys</a></li>
@@ -46,9 +46,9 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                   { user?<>
+                   {user && user?<>
                     <div className={`w-14 border-4  border-white rounded-full`}>
-                        <img className={`rounded-full hover:${user?.providerId} text-white`} src={user?.photoURL} />
+                        <img className={`rounded-full hover:${user?.displayName} text-white`} src={user?.photoURL} />
                     </div>
                     <Link onClick={handleLogout} to={'/login'} className=" ml-5 bg-white px-10 py-3 rounded-3xl font-bold text-green-900"> Logout</Link>
                    </> :
