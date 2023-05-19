@@ -3,26 +3,32 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
-    const {login}  = useContext(AuthContext);
+    const { login,loginWithGoogle } = useContext(AuthContext);
 
-    const handleLogin = event =>{
+    const handleLogin = event => {
         event.preventDefault();
 
-        const form  =event.target;
+        const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(email,password)
-
+        console.log(email, password)
         login(email,password)
+        .then(result => console.log(result.user))
+        .catch(error => console.log(error))
+         
+    }
+
+    const handleGoogleLogin = () =>{
+        loginWithGoogle()
         .then(result =>{
-            const user = result.usser;
-            console.log(user)
+            console.log(result.user)
         })
         .catch(error =>{
             console.log(error)
         })
     }
+
     return (
         <div className="  min-h-screen mx-auto w-1/2 mt-20 ">
             <h1 className=" text-center text-3xl font-bold mb-12 text-green-600">Please Login</h1>
@@ -49,7 +55,7 @@ const Login = () => {
                         </div>
                         <div className="divider">OR Sign in With</div>
                         <div className=" text-center">
-                            <button className=" text-white font-bold bg-green-500">google</button>
+                            <button onClick={handleGoogleLogin} className=" text-white font-bold bg-green-500">google</button>
                         </div>
                         <p className=" mt-5 text-center">New to TOTRONICS? <Link className=" text-green-800 font-bold" to={'/register'}>Please Register</Link></p>
                     </form>
