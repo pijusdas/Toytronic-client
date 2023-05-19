@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Banner from "../../Pages/Home/Banner/Banner";
 
 const NavBar = () => {
     return (
@@ -22,7 +21,7 @@ const NavBar = () => {
                     </div>
                     <a className=" text-2xl font-bold text-white "><span className=" text-green-400">TOY</span>TRONICS</a>
                 </div>
-                <div className="navbar-center hidden text-gray-100 font-bold lg:flex">
+                <div className="navbar-center hidden  text-white font-bold lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><a>Home</a></li>
                         <li tabIndex={0}>
@@ -31,7 +30,8 @@ const NavBar = () => {
                         <li><a>My Toys</a></li>
                         <li><a>Add A Toys</a></li>
                         <li><a>Blogs</a></li>
-                        <li><a>Login</a></li>
+                        <li><Link to={'/login'}>Login</Link></li>
+                        <li><Link to={'/register'}>Register</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
@@ -40,7 +40,6 @@ const NavBar = () => {
             </div>
             <hr />
             {/* banner section */}
-            <Banner></Banner>
         </div>
     );
 };
