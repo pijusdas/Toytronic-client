@@ -3,6 +3,7 @@ import App from "../App";
 import Login from "../components/Pages/Login/Login";
 import Home from "../components/Pages/Home/Home/Home";
 import Register from "../components/Pages/Register/Register";
+import AddToys from "../components/AddToys/AddToys";
 
 
 const router = createBrowserRouter([
@@ -11,7 +12,7 @@ const router = createBrowserRouter([
       element:   <App></App>,
       children:[
         {
-            path: '/',
+            path: "/",
             element: <Home></Home>
         },
         {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         {
             path:'/register',
             element:  <Register/>
+        },
+        {
+            path: '/addToys',
+            element: <AddToys/>
         }
 
       ]

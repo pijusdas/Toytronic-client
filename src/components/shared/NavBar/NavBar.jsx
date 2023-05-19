@@ -1,6 +1,16 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const NavBar = () => {
+    const { user,logout } = useContext(AuthContext)
+    console.log(user)
+
+    const handleLogout = ()=>{
+        logout()
+        .then(res => console.log(res))
+        .then(err=> console.log(err))
+    }
     return (
         <div className=" bg-[#1B4D3E]">
             <div className="navbar bg-[#1B4D3E] h-20">
@@ -23,19 +33,26 @@ const NavBar = () => {
                 </div>
                 <div className="navbar-center hidden  text-white font-bold lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><a>Home</a></li>
+                        <li><Link to={'/'}>Home</Link></li>
                         <li tabIndex={0}>
                             <Link>All Toys</Link>
                         </li>
-                        <li><a>My Toys</a></li>
-                        <li><a>Add A Toys</a></li>
+                        {user && <>
+                            <li><a>My Toys</a></li>
+                            <li><Link to={'/addToys'}>Add A Toys</Link></li>
+                        </>}
                         <li><a>Blogs</a></li>
-                        <li><Link to={'/login'}>Login</Link></li>
                         <li><Link to={'/register'}>Register</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link className=" bg-white px-10 py-3 rounded-3xl font-bold text-green-900">Call Now</Link>
+                   { user?<>
+                    <div className={`w-14 border-4  border-white rounded-full`}>
+                        <img className={`rounded-full hover:${user?.providerId} text-white`} src={user?.photoURL} />
+                    </div>
+                    <Link onClick={handleLogout} to={'/login'} className=" ml-5 bg-white px-10 py-3 rounded-3xl font-bold text-green-900"> Logout</Link>
+                   </> :
+                    <Link to={'/login'} className=" bg-white px-10 py-3 rounded-3xl font-bold text-green-900"> Login</Link>}
                 </div>
             </div>
             <hr />
