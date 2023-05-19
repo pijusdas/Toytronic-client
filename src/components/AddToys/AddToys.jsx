@@ -1,11 +1,51 @@
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const AddToys = () => {
-    const handleAddToys = event =>{
+    const { user } = useContext(AuthContext)
+    console.log(user?.displayName)
+
+    const handleAddToys = event => {
         event.preventDefault();
 
-        const form = event.target 
+        const form = event.target
+        const photo = form.photoUrl.value;
+        const name = form.name.value
+        const sellerName = form.sellerName.value;
+        const sellerEmail = form.sellerEmail.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const quntity = form.quntity.value;
+        const details = form.details.value;
+
+        // subicategory data
+        const categoryName = form.categoryName.value;
+        const subName = form.subName.value;
         const subPhoto = form.subPhoto.value;
-        console.log(subPhoto)
+        const subPrice = form.subName.value;
+        const subRatings = form.subRatings.value;
+        const categoryToy = { categoryName, subName, subPhoto, subPrice, subRatings, }
+
+        const addedToy = {
+            name, photo, sellerName, sellerEmail, price, rating, quntity, details, category: [
+                categoryToy
+            ]
+        }
+
+        fetch('http://localhost:5000/addToy', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(addedToy)
+        })
+            .then(result => {
+                console.log(result)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        console.log(addedToy)
     }
     return (
         <div>
@@ -17,7 +57,7 @@ const AddToys = () => {
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="url" name="photo" placeholder="photo" className="input input-bordered" />
+                            <input type="url" name="photoUrl" placeholder="photo" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -31,13 +71,13 @@ const AddToys = () => {
                     <div className="card-body">
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Seller Name</span>
+                                <span defaultValue={user?.displayName} className="label-text">Seller Name</span>
                             </label>
-                            <input type="text" name="seller" placeholder="password" className="input input-bordered" />
+                            <input type="text" name="sellerName" placeholder="password" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Seller Email</span>
+                                <span defaultValue={user?.email} className="label-text">Seller Email</span>
                             </label>
                             <input type="text" name="sellerEmail" placeholder="email" className="input input-bordered" />
                         </div>
@@ -72,8 +112,14 @@ const AddToys = () => {
 
 
                         <div className="dropdown mb-20 md:dropdown-top dropdown-left dropdown-end">
-                            <label tabIndex={0} className="m-1">Sub-Category</label>
+                            <label tabIndex={0} className="m-1 btn bg-green-900 ">Sub-Category</label>
                             <ul tabIndex={0} className="dropdown-content bg-slate-300 menu p-2 shadow   rounded-box w-96">
+                                <li>
+                                    <label className="label">
+                                        <span className="label-text">Category Name</span>
+                                    </label>
+                                    <input type="text" name="categoryName" placeholder="name" className="input input-bordered" />
+                                </li>
                                 <li>
                                     <label className="label">
                                         <span className="label-text">Name</span>
