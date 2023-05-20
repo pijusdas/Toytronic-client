@@ -2,12 +2,13 @@ import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const CategoryCart = ({ toy }) => {
     const [rating, setRating] = useState(parseInt(toy?.rating));
 
-  
+
 
     return (
         <div className="card mt-7 w-96 h-full bg-base-100 shadow-2xl border-y-4 border-green-500">
@@ -24,7 +25,9 @@ const CategoryCart = ({ toy }) => {
                             onChange={setRating}
                         />
                     </p>
-                    <button className="btn bg-green-800">View Details</button>
+                    <Link to={`/viewDetails/${toy?._id}`}>
+                        <button className="btn bg-green-800">View Details</button>
+                    </Link>
                 </div>
             </div>
         </div>

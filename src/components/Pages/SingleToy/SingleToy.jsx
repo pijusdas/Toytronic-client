@@ -1,9 +1,49 @@
- 
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Rating } from '@smastrom/react-rating'
+
+import '@smastrom/react-rating/style.css'
+
+
 const SingleToy = () => {
+    const [singleToy, setSingleToy] = useState({})
+    const { id } = useParams()
+    const [rating, setRating] = useState(parseInt(singleToy?.rating));
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/singleToy/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setSingleToy(data)
+            })
+    }, [id])
     return (
-        <div>
-            
+        <div className="card lg:card-side h-ful bg-green-100 my-16 mx-auto shadow-xl">
+            <figure><img className=" h-full " src={singleToy?.photo} alt="Movie" /></figure>
+            <div className="card-body">
+                <h2 className="card-title text-2xl font-bold">Name: {singleToy?.name}</h2>
+                <p className=" text-xl font-bold">Seller Name: {singleToy?.sellerName} </p>
+                <p className=" text-xl font-bold">Seller Email: {singleToy?.sellerEmail} </p>
+
+                <p className="text-xl font-bold">Price: {singleToy?.price}</p>
+                <p ><b className="text-xl font-bold">Available Quantity:</b> {singleToy?.quntity}</p>
+                <p> <b className=" font-bold text-xl">Details: </b> {singleToy?.details}</p>
+                <p>Category: {singleToy?.category?.value}</p>
+
+                <p>
+
+                    <Rating
+                        style={{ maxWidth: 180 }}
+                        value={rating}
+                        onChange={setRating}
+                    />
+                </p>
+                <div className="card-actions justify-end">
+                    <button className="btn bg-green-600 hover:bg-green-700">Order Now</button>
+                </div>
+            </div>
         </div>
+
     );
 };
 

@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
+import { useContext, useEffect, useState } from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import Select from 'react-select';
-import { AuthContext } from "../AuthProvider/AuthProvider";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useParams } from "react-router-dom";
 
 
 const options = [
@@ -11,64 +11,79 @@ const options = [
     { value: 'Vehicle-toy', label: 'Vehicle-toy' },
 ];
 
-const AddToys = () => {
+
+const UpdateMyToy = () => {
     const { user } = useContext(AuthContext)
     const [selectedOption, setSelectedOption] = useState(null);
+    const [toy,setToy] = useState({})
+
+    const { id } = useParams()
+
+    useEffect(()=>{
+        fetch(`http://localhost:5000/singleToy/${id}`)
+        .then(res => res.json())
+        .then(data => setToy(data))
+
+    },[id])
 
 
-    const handleAddToys = event => {
+
+    const handleUpdatedToys = (event) => {
         event.preventDefault();
 
         const form = event.target
         const photo = form.photoUrl.value;
-        const name = form.name.value
+        const name = form.name.value;
         const sellerName = form.sellerName.value;
         const sellerEmail = form.sellerEmail.value;
         const price = form.price.value;
         const rating = form.rating.value;
         const quntity = form.quntity.value;
         const details = form.details.value;
+        const _id = form._id.value;
 
-        
-        const addedToy = {
-            name, photo, sellerName, sellerEmail, price, rating, quntity, details,category:selectedOption
+
+        const updatedToy = {
+            _id, name, photo, sellerName, sellerEmail, price, rating, quntity, details, category: selectedOption
         }
 
-        fetch('http://localhost:5000/allToys', {
-            method: 'POST',
+        console.log(updatedToy)
+
+        fetch(`http://localhost:5000/updateToy/${id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(addedToy)
+            body: JSON.stringify(updatedToy)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                if (data.insertedId) {
-                    toast("Added Toy Succesfully!")
-
+                if (data.modifiedCount > 0) {
+                    alert('updated succesfully')
                 }
             })
 
-        console.log(addedToy)
     }
     return (
         <div>
             <h1 className="text-center text-5xl font-bold ">Add Your Toy</h1>
-            <form onSubmit={handleAddToys} className=" w-full  ">
+            <form onSubmit={handleUpdatedToys} className=" w-full  ">
                 <div className=" grid grid-cols-2  ">
                     <div className="card-body">
+
                         <div className="form-control">
+                            <input className="input block input-bordered" defaultValue={toy?._id} type="text" name="_id" placeholder={toy?._id} />
+
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="url" name="photoUrl" placeholder="photo" className="input input-bordered" />
+                            <input type="url" name="photoUrl" defaultValue={toy && toy?.photo} className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" name="name" placeholder="name" className="input input-bordered" />
+                            <input type="text" name="name" defaultValue={toy?.name} className="input input-bordered" />
 
                         </div>
 
@@ -78,13 +93,13 @@ const AddToys = () => {
                             <label className="label">
                                 <span className="label-text">Seller Name</span>
                             </label>
-                            <input defaultValue={user?.displayName}  type="text" name="sellerName"  className="input input-bordered" />
+                            <input defaultValue={user?.displayName} type="text" name="sellerName" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Seller Email</span>
                             </label>
-                            <input  defaultValue={user && user?.email}  type="text" name="sellerEmail"   className="input input-bordered" />
+                            <input defaultValue={user && user?.email} type="text" name="sellerEmail" className="input input-bordered" />
                         </div>
                     </div>
                     <div className="card-body">
@@ -92,13 +107,13 @@ const AddToys = () => {
                             <label className="label">
                                 <span className="label-text">Price</span>
                             </label>
-                            <input type="text" name="price" placeholder="price" className="input input-bordered" />
+                            <input type="text" name="price" defaultValue={toy?.price} className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Ratings</span>
                             </label>
-                            <input type="text" name="rating" placeholder="rating" className="input input-bordered" />
+                            <input type="text" name="rating" defaultValue={toy?.rating} className="input input-bordered" />
                         </div>
                     </div>
                     <div className="card-body">
@@ -106,35 +121,34 @@ const AddToys = () => {
                             <label className="label">
                                 <span className="label-text">Available Quantity</span>
                             </label>
-                            <input type="text" name="quntity" placeholder="quantity" className="input input-bordered" />
+                            <input type="text" name="quntity" defaultValue={toy?.quntity} className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Details Description</span>
                             </label>
-                            <input type="text" name="details" placeholder="details" className="input input-bordered" />
+                            <input type="text" name="details" defaultValue={toy?.details} className="input input-bordered" />
                         </div>
-                        
+
 
                         <div className="App">
                             <p>Category</p>
                             <Select
-                                defaultValue={selectedOption}
+                                defaultValue={toy?.category?.value}
                                 onChange={setSelectedOption}
                                 options={options}
                             />
                         </div>
-                       
+
                     </div>
 
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn hover:bg-[#071f17] bg-[#1B4D3E] btn-primary">Add Toy </button>
+                    <button className="btn hover:bg-[#071f17] bg-[#1B4D3E] btn-primary">Updated Toy</button>
                 </div>
             </form>
-            <ToastContainer />
         </div>
     );
 };
 
-export default AddToys;
+export default UpdateMyToy;

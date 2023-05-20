@@ -51,7 +51,7 @@ const ShopCategory = () => {
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <div className=' grid grid-cols-2'>
+                        <div className=' grid gap-8 grid-cols-2'>
                            
                             {
                                 vehicleTos && vehicleTos.map(toy => <VehilcleToy key={toy._id} toy={toy}></VehilcleToy>)
