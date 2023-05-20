@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
+
 const NavBar = () => {
     const { user,logout } = useContext(AuthContext)
-    console.log(user)
+    console.log('userrr',user)
 
     const handleLogout = ()=>{
         logout()
@@ -41,14 +42,14 @@ const NavBar = () => {
                             <li><Link to={'/myToys'}>My Toys</Link></li>
                             <li><Link to={'/addToys'}>Add A Toys</Link></li>
                         </>}
-                        <li><a>Blogs</a></li>
+                        <li className={`hover:text-green-400`}><a>Blogs</a></li>
                         <li><Link to={'/register'}>Register</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
                    {user && user?<>
-                    <div className={`w-14 border-4  border-white rounded-full`}>
-                        <img className={`rounded-full hover:${user?.displayName} text-white`} src={user?.photoURL} />
+                    <div  className={`w-14 border-4     border-white rounded-full`}>
+                        <img title={`${user?.displayName}`} className={`rounded-full text-white`} src={user?.photoURL} />
                     </div>
                     <Link onClick={handleLogout} to={'/login'} className=" ml-5 bg-white px-10 py-3 rounded-3xl font-bold text-green-900"> Logout</Link>
                    </> :
@@ -56,7 +57,10 @@ const NavBar = () => {
                 </div>
             </div>
             <hr />
-            {/* banner section */}
+            {/* banner section */
+            console.log( "line no 60",user?.email)
+
+            }
         </div>
     );
 };

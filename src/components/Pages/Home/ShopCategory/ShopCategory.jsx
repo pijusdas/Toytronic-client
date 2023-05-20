@@ -9,7 +9,7 @@ const ShopCategory = () => {
  const [roboticsToy,setRoboticsToy] = useState([])
  const [vehicleTos,setVehicleToys] = useState([])
 
- console.log(IntelligentToy)
+//  console.log(IntelligentToy)
     useEffect(()=>{
         fetch('http://localhost:5000/allToys')
         .then(res => res.json())
