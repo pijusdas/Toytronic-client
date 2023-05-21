@@ -53,7 +53,7 @@ const AddToys = () => {
         console.log(addedToy)
     }
     return (
-        <div>
+        <div className=" my-20">
             <h1 className="text-center text-5xl font-bold ">Add Your Toy</h1>
             <form onSubmit={handleAddToys} className=" w-full  ">
                 <div className=" grid grid-cols-2  ">
