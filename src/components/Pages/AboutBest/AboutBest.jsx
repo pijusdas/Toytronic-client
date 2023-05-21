@@ -19,7 +19,7 @@ const AboutBest = () => {
                     <div className="card-body">
                         <FaSlack className="  text-green-800 h-24 w-24"></FaSlack>
                         <h2 className="card-title text-2xl font-bold my-5"> Wide Range of Electric Toys</h2>
-                        <p>Explore a vast collection of electric toys that cover a diverse range of interests and age groups. From high-speed remote-controlled cars to mesmerizing drones and interactive robots, we offer an extensive selection that caters to all preferences and ensures there's something for everyone.
+                        <p>Explore a vast collection of electric toys that cover a diverse range of interests and age groups. From high-speed remote-controlled cars to mesmerizing drones and interactive robots, we offer an extensive selection that caters to all preferences and ensures there is something for everyone.
                         </p>
                     </div>
                 </div>
@@ -27,7 +27,7 @@ const AboutBest = () => {
                     <div className="card-body">
                         <FaWeight className="  text-green-800 h-24 w-24"></FaWeight>
                         <h2 className="card-title text-2xl font-bold my-5">  Uncompromising Quality Standards</h2>
-                        <p>We prioritize quality and safety, ensuring that every electric toy in our inventory meets stringent standards. Our toys are made from durable materials, undergo thorough testing, and are designed to withstand the rigors of play. With us, you can trust that you're getting products of the highest quality.</p>
+                        <p>We prioritize quality and safety, ensuring that every electric toy in our inventory meets stringent standards. Our toys are made from durable materials, undergo thorough testing, and are designed to withstand the rigors of play. With us, you can trust that you are getting products of the highest quality.</p>
                     </div>
                 </div>
                 <div className="card w-full bg-green-100 shadow-2xl">
