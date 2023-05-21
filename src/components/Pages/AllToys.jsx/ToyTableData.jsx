@@ -9,7 +9,7 @@ const ToyTableData = ({ toy }) => {
             <td>{price}</td>
             <td>{category?.value}</td>
             <td>{quntity}</td>
-            <Link to={`/toy/${_id}`}>
+            <Link to={`/viewDetails/${_id}`}>
                 <button className=" btn mt-3 font-bold hover:bg-green-900 bg-green-700">View Details</button>
             </Link>
         </tr>

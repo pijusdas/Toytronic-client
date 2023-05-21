@@ -42,7 +42,7 @@ const NavBar = () => {
                             <li><Link to={'/myToys'}>My Toys</Link></li>
                             <li><Link to={'/addToys'}>Add A Toys</Link></li>
                         </>}
-                        <li className={`hover:text-green-400`}><a>Blogs</a></li>
+                        <li ><Link to={'/blogs'}>Blogs</Link></li>
                         <li><Link to={'/register'}>Register</Link></li>
                     </ul>
                 </div>
