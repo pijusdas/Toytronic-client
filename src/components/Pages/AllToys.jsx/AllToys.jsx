@@ -10,7 +10,11 @@ const AllToys = () => {
     useEffect(() => {
         fetch('https://toytronics-server.vercel.app/allToys')
             .then(res => res.json())
-            .then(data => setallToys(data))
+            .then(data => {
+                
+                setallToys(data)
+                console.log(data)
+            })
     }, [])
 
 

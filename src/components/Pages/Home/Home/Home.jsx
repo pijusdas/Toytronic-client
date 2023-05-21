@@ -1,5 +1,5 @@
-import AboutBest from "../../AboutBest/AboutBest";
 import AosPackage from "../../AosPackage/AosPackage";
+import AboutBest from "../../Our/AboutBest";
 import Banner from "../Banner/Banner";
 import ShopCategory from "../ShopCategory/ShopCategory";
 import Gallery from "./Gallery";
