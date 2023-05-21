@@ -8,14 +8,14 @@ const AllToys = () => {
     // const { name, price, _id, quntity, sellerName, category } = allToys
 
     useEffect(() => {
-        fetch('http://localhost:5000/allToys')
+        fetch('https://toytronics-server.vercel.app/allToys')
             .then(res => res.json())
             .then(data => setallToys(data))
     }, [])
 
 
     const handleSearch = () =>{
-        fetch(`http://localhost:5000/searchToy/${searchText}`)
+        fetch(`https://toytronics-server.vercel.app/searchToy/${searchText}`)
         .then(res=> res.json())
         .then(data =>{
             setallToys(data)

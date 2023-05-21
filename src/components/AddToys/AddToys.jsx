@@ -34,7 +34,7 @@ const AddToys = () => {
             name, photo, sellerName, sellerEmail, price, rating, quntity, details,category:selectedOption
         }
 
-        fetch('http://localhost:5000/allToys', {
+        fetch('https://toytronics-server.vercel.app/allToys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

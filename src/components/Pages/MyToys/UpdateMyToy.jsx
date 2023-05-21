@@ -20,7 +20,7 @@ const UpdateMyToy = () => {
     const { id } = useParams()
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/singleToy/${id}`)
+        fetch(`https://toytronics-server.vercel.app/singleToy/${id}`)
         .then(res => res.json())
         .then(data => setToy(data))
 
@@ -49,7 +49,7 @@ const UpdateMyToy = () => {
 
         console.log(updatedToy)
 
-        fetch(`http://localhost:5000/updateToy/${id}`, {
+        fetch(`https://toytronics-server.vercel.app/updateToy/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
