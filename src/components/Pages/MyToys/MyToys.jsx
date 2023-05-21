@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 const MyToys = () => {
     const { user } = useContext(AuthContext)
     const [myToys, setMyToys] = useState([])
-    const [control,setControl] =useState(false)
+    const [control, setControl] = useState(false)
 
 
 
@@ -22,7 +22,7 @@ const MyToys = () => {
             .then(data => {
                 setMyToys(data)
             })
-    }, [user,control])
+    }, [user, control])
 
 
     const handleDelete = id => {
@@ -50,7 +50,7 @@ const MyToys = () => {
                                 'Deleted!',
                                 'Your Toy has been deleted.',
                                 'success'
-                            )  
+                            )
                             setControl(!control)
                         }
                     })
@@ -60,7 +60,12 @@ const MyToys = () => {
 
     return (
         <div>
-            <div className="overflow-x-auto">
+            <h1 className=" text-center font-bold text-5xl my-10">My Toys</h1>
+
+            <div className=" flex justify-end mr-10">
+                <button className="btn btn-outline ">Short Data By Price</button>
+            </div>
+            <div className="overflow-x-auto my-20">
                 <table className="table table-zebra w-full">
                     {/* head */}
                     <thead>
@@ -93,7 +98,7 @@ const MyToys = () => {
                                     <button className="btn hover:bg-green-700 bg-green-600">Update Toy</button>
                                 </Link>
                             </td>
-                            <td> <button onClick={()=> handleDelete(toy?._id)} className="btn hover:bg-red-700 bg-red-600">Delete</button></td>
+                            <td> <button onClick={() => handleDelete(toy?._id)} className="btn hover:bg-red-700 bg-red-600">Delete</button></td>
 
                         </tr>)}
 

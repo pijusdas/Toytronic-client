@@ -30,7 +30,7 @@ const AllToys = () => {
             {/* search section */}
             <h1 className=" text-5xl font-bold text-center my-20">Toy World</h1>
 
-            <div className="form-control w-1/2 mx-auto mb-10">
+            <div className=" w-2/6 mx-auto mb-10">
                 <div className="input-group">
                     <input type="text" onChange={(e)=> setsearchText(e.target.value)} placeholder="Search…" className="input border-2 border-green-900 input-bordered" />
                     <button onClick={handleSearch} className="btn btn-square bg-green-900">
@@ -40,7 +40,7 @@ const AllToys = () => {
             </div>
 
             {/* My Toy table */}
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto my-10">
                 <table className="table w-full">
                     {/* head */}
                     <thead>

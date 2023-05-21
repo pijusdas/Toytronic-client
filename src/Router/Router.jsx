@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import SingleToy from "../components/Pages/SingleToy/SingleToy";
 import UpdateMyToy from "../components/Pages/MyToys/UpdateMyToy";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import Blogs from "../components/Pages/Blogs/Blogs";
 
 
 const router = createBrowserRouter([
@@ -51,7 +52,12 @@ const router = createBrowserRouter([
        {
         path: '/updateToy/:id',
         element: <UpdateMyToy></UpdateMyToy>,
+       },
+       {
+        path: '/blogs',
+        element: <Blogs/>
        }
+
 
 
       ]

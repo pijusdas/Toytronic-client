@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
     const { login,loginWithGoogle } = useContext(AuthContext);
@@ -8,7 +9,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     console.log(location)
-    
+
     const from = location.state?.from?.pathname || '/'
 
     const handleLogin = event => {
@@ -65,7 +66,7 @@ const Login = () => {
                         </div>
                         <div className="divider">OR Sign in With</div>
                         <div className=" text-center">
-                            <button onClick={handleGoogleLogin} className=" text-white font-bold bg-green-500">google</button>
+                            <button onClick={handleGoogleLogin}   ><FaGoogle className=" h-8 w-8 font-bold text-green-600" ></FaGoogle> </button>
                         </div>
                         <p className=" mt-5 text-center">New to TOTRONICS? <Link className=" text-green-800 font-bold" to={'/register'}>Please Register</Link></p>
                     </form>
