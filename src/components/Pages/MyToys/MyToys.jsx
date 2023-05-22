@@ -25,6 +25,18 @@ const MyToys = () => {
     }, [user, control])
 
 
+    const sortByPrice = () => {
+        const sortedItems = [...myToys].sort((a, b) => parseInt(a.price) - parseInt(b.price));
+        setMyToys(sortedItems);
+        console.log(sortedItems)
+    };
+    const sortByPriceDescending = () => {
+        const sortedItems = [...myToys].sort((a, b) => parseInt(b.price) - parseInt(a.price));
+        setMyToys(sortedItems);
+        console.log(sortedItems)
+    };
+
+
     const handleDelete = id => {
         console.log(id)
         Swal.fire({
@@ -62,8 +74,13 @@ const MyToys = () => {
         <div>
             <h1 className=" text-center font-bold text-5xl my-10">My Toys</h1>
 
-            <div className=" flex justify-end mr-10">
-                <button className="btn btn-outline ">Short Data By Price</button>
+            <div className=" flex gap-2 justify-end">
+                <div className=" flex justify-end mr-10">
+                    <button onClick={sortByPrice} className="btn btn-outline ">Short Data By Price Ascending</button>
+                </div>
+                <div className=" flex justify-end mr-10">
+                    <button onClick={sortByPriceDescending} className="btn btn-outline ">Short Data By Price Descending</button>
+                </div>
             </div>
             <div className="overflow-x-auto my-20">
                 <table className="table table-zebra w-full">
@@ -89,7 +106,7 @@ const MyToys = () => {
                             <td>{toy?.sellerName}</td>
                             <td>{toy?.sellerEmail}</td>
                             <td>{toy?.name}</td>
-                            <td>{toy?.price}</td>
+                            <td>${toy?.price}</td>
                             <td>{toy?.rating} Stars</td>
                             <td>{toy?.quntity}</td>
                             <td>{toy?.category?.value}</td>
