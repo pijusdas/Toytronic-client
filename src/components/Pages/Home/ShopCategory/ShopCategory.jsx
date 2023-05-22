@@ -11,7 +11,7 @@ const ShopCategory = () => {
 
 //  console.log(IntelligentToy)
     useEffect(()=>{
-        fetch('https://toytronics-server.vercel.app/allToys')
+        fetch('https://pijus-repo-production.up.railway.app/allToys')
         .then(res => res.json())
         .then(data =>{
             const filterIntelligentsToy = data.filter(t => t.category.value === 'Intelligent-toy' ) 

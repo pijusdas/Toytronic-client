@@ -17,7 +17,7 @@ const MyToys = () => {
 
 
     useEffect(() => {
-        fetch(`https://toytronics-server.vercel.app/allToys/${user?.email}`)
+        fetch(`https://pijus-repo-production.up.railway.app/allToys/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyToys(data)
@@ -39,7 +39,7 @@ const MyToys = () => {
             if (result.isConfirmed) {
 
 
-                fetch(`https://toytronics-server.vercel.app/singleToy/${id}`, {
+                fetch(`https://pijus-repo-production.up.railway.app/singleToy/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

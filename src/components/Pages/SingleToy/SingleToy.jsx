@@ -11,7 +11,7 @@ const SingleToy = () => {
     const [rating, setRating] = useState(parseInt(singleToy?.rating));
 
     useEffect(() => {
-        fetch(`https://toytronics-server.vercel.app/singleToy/${id}`)
+        fetch(`https://pijus-repo-production.up.railway.app/singleToy/${id}`)
             .then(res => res.json())
             .then(data => {
                 setSingleToy(data)
