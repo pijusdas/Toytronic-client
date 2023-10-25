@@ -8,7 +8,7 @@ const AllToys = () => {
     // const { name, price, _id, quntity, sellerName, category } = allToys
 
     useEffect(() => {
-        fetch('https://pijus-repo-production.up.railway.app/allToys')
+        fetch('https://toytronic-server-pijus.onrender.com/allToys')
             .then(res => res.json())
             .then(data => {
                 
@@ -19,7 +19,7 @@ const AllToys = () => {
 
 
     const handleSearch = () =>{
-        fetch(`https://pijus-repo-production.up.railway.app/searchToy/${searchText}`)
+        fetch(`https://toytronic-server-pijus.onrender.com/searchToy/${searchText}`)
         .then(res=> res.json())
         .then(data =>{
             setallToys(data)

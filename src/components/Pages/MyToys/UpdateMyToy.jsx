@@ -20,7 +20,7 @@ const UpdateMyToy = () => {
     const { id } = useParams()
 
     useEffect(()=>{
-        fetch(`https://pijus-repo-production.up.railway.app/singleToy/${id}`)
+        fetch(`https://toytronic-server-pijus.onrender.com/singleToy/${id}`)
         .then(res => res.json())
         .then(data => setToy(data))
 
@@ -49,7 +49,7 @@ const UpdateMyToy = () => {
 
         console.log(updatedToy)
 
-        fetch(`https://pijus-repo-production.up.railway.app/updateToy/${id}`, {
+        fetch(`https://toytronic-server-pijus.onrender.com/updateToy/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

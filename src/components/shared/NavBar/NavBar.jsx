@@ -16,6 +16,10 @@ const NavBar = () => {
 
         <>
         {/* Upper Nav Bar section */}
+
+        <div className=" bg-black px-4 py-3 flex justify-center items-center">
+            <h1 className=" text-green-400">Contact Us On <span className="text-white">+99173873730 or <span className=" text-green-400 text-lg">support@example.com</span></span> </h1>
+        </div>
             <div className=" bg-[#1B4D3E]">
                 <div className="navbar bg-[#1B4D3E] h-20">
                     <div className="navbar-start">

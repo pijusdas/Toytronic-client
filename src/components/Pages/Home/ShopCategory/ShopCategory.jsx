@@ -11,16 +11,17 @@ const ShopCategory = () => {
 
 //  console.log(IntelligentToy)
     useEffect(()=>{
-        fetch('https://pijus-repo-production.up.railway.app/allToys')
+        fetch('https://toytronic-server-pijus.onrender.com/allToys')
         .then(res => res.json())
         .then(data =>{
-            const filterIntelligentsToy = data.filter(t => t.category.value === 'Intelligent-toy' ) 
+
+            const filterIntelligentsToy = data.filter(t => t?.category?.value === 'Intelligent-toy' ) 
             settIntelligentsToy(filterIntelligentsToy)
 
-            const filterRoboticsToy = data.filter(t => t.category.value === 'Robotics-toy' ) 
+            const filterRoboticsToy = data.filter(t => t?.category?.value === 'Robotics-toy' ) 
             setRoboticsToy( filterRoboticsToy)
 
-            const filterVehicleToy = data.filter(t => t.category.value === 'Vehicle-toy');
+            const filterVehicleToy = data.filter(t => t?.category?.value === 'Vehicle-toy');
             setVehicleToys(filterVehicleToy)
         })
     },[])

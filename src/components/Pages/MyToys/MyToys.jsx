@@ -17,7 +17,7 @@ const MyToys = () => {
 
 
     useEffect(() => {
-        fetch(`https://pijus-repo-production.up.railway.app/allToys/${user?.email}`)
+        fetch(`https://toytronic-server-pijus.onrender.com/allToys/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyToys(data)
@@ -51,7 +51,7 @@ const MyToys = () => {
             if (result.isConfirmed) {
 
 
-                fetch(`https://pijus-repo-production.up.railway.app/singleToy/${id}`, {
+                fetch(`https://toytronic-server-pijus.onrender.com/singleToy/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

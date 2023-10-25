@@ -34,7 +34,7 @@ const AddToys = () => {
             name, photo, sellerName, sellerEmail, price, rating, quntity, details,category:selectedOption
         }
 
-        fetch('https://pijus-repo-production.up.railway.app/allToys', {
+        fetch('https://toytronic-server-pijus.onrender.com/allToys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
