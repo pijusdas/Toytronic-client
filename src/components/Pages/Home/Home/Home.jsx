@@ -1,6 +1,8 @@
 import AosPackage from "../../AosPackage/AosPackage";
 import AboutBest from "../../Our/AboutBest";
 import Banner from "../Banner/Banner";
+import ContactUs from "../ContactUs/ContactUs";
+import Offer20 from "../Offer20/Offer20";
 import ShopCategory from "../ShopCategory/ShopCategory";
 import Gallery from "./Gallery";
 
@@ -15,6 +17,8 @@ const Home = () => {
                 <AosPackage></AosPackage>
                 <AboutBest></AboutBest>
             </div>
+                <Offer20/>
+                <ContactUs/>
         </div>
     );
 };

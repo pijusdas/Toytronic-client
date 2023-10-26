@@ -25,7 +25,7 @@ const Register = () => {
          })
     }
     return (
-        <div className="  min-h-screen mx-auto w-1/2 mt-20 ">
+        <div className="  min-h-screen mx-auto w-1/2 my-20 ">
             <h1 className=" text-center text-3xl font-bold mb-12 text-green-600">Please Register</h1>
             <div className=" border-y-4   border-y-green-500 rounded-2xl ">
                 <div className="card flex-shrink-0    shadow-2xl bg-base-100">
